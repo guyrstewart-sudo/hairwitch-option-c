@@ -356,9 +356,12 @@
       "html,body{overflow-x:hidden;}" +
       "#hw-award-hero{padding:0;width:100vw;margin-left:calc(50% - 50vw);}" +
       "#hw-award-hero .hw-ah-canvas{max-width:none;height:100vh;}" +
-      "#hw-award-hero .hw-ah-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;}" +
-      "#hw-award-hero .hw-ah-hang{right:6%;width:clamp(150px,14vw,210px);}" +
-      "#hw-award-hero .hw-ah-cta{bottom:9%;}" +
+      "#hw-award-hero .hw-ah-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 3%;}" +
+      "#hw-award-hero .hw-ah-hang{right:auto;left:63%;width:clamp(280px,27vw,420px);}" +
+      "#hw-award-hero .hw-ah-thread{height:26vh;}" +
+      "#hw-award-hero .hw-ah-plate .l1{font-size:13px;}" +
+      "#hw-award-hero .hw-ah-plate .l2{font-size:11px;}" +
+      "#hw-award-hero .hw-ah-cta{left:calc(63% + clamp(140px,13.5vw,210px));bottom:11%;}" +
     "}" +
     "@media (prefers-reduced-motion:reduce){#hw-award-hero .hw-ah-hang{animation:none;}#hw-award-hero .hw-ah-inner{transition:none;}}";
   document.head.appendChild(css);
