@@ -352,6 +352,14 @@
     "#hw-award-hero .hw-ah-plate .l2{font-size:8.5px;letter-spacing:.34em;color:rgba(255,255,255,.85);margin-top:4px;}" +
     "#hw-award-hero .hw-ah-cta{position:absolute;left:50%;bottom:7.5%;transform:translateX(-50%);z-index:3;background:#fff;color:#000;padding:16px 44px;font-size:13px;letter-spacing:.32em;text-decoration:none;text-transform:uppercase;font-weight:500;font-family:Jost,sans-serif;}" +
     "#hw-award-hero .hw-ah-cta:hover{background:#f6e7b8;}" +
+    "@media (min-width:900px){" +
+      "html,body{overflow-x:hidden;}" +
+      "#hw-award-hero{padding:0;width:100vw;margin-left:calc(50% - 50vw);}" +
+      "#hw-award-hero .hw-ah-canvas{max-width:none;height:100vh;}" +
+      "#hw-award-hero .hw-ah-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;}" +
+      "#hw-award-hero .hw-ah-hang{right:6%;width:clamp(150px,14vw,210px);}" +
+      "#hw-award-hero .hw-ah-cta{bottom:9%;}" +
+    "}" +
     "@media (prefers-reduced-motion:reduce){#hw-award-hero .hw-ah-hang{animation:none;}#hw-award-hero .hw-ah-inner{transition:none;}}";
   document.head.appendChild(css);
 
