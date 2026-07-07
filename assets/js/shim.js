@@ -327,6 +327,7 @@
     "#hw-award-hero{background:#000;padding:0 0 6px;}" +
     "#hw-award-hero .hw-ah-canvas{position:relative;overflow:hidden;max-width:780px;margin:0 auto;}" +
     "#hw-award-hero .hw-ah-photo{display:block;width:100%;height:auto;}" +
+    "#hw-award-hero .hw-ah-bg{display:none;}" +
     "#hw-award-hero .hw-ah-frame{position:absolute;inset:14px;border:1px solid rgba(207,168,94,.5);pointer-events:none;}" +
     "#hw-award-hero .hw-ah-frame:before,#hw-award-hero .hw-ah-frame:after{content:'';position:absolute;width:26px;height:26px;border:1px solid rgba(207,168,94,.85);}" +
     "#hw-award-hero .hw-ah-frame:before{top:-1px;left:-1px;border-right:0;border-bottom:0;}" +
@@ -355,13 +356,15 @@
     "@media (min-width:900px){" +
       "html,body{overflow-x:hidden;}" +
       "#hw-award-hero{padding:0;width:100vw;margin-left:calc(50% - 50vw);}" +
-      "#hw-award-hero .hw-ah-canvas{max-width:none;height:100vh;}" +
-      "#hw-award-hero .hw-ah-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 3%;}" +
-      "#hw-award-hero .hw-ah-hang{right:auto;left:63%;width:clamp(280px,27vw,420px);}" +
-      "#hw-award-hero .hw-ah-thread{height:26vh;}" +
+      "#hw-award-hero .hw-ah-canvas{max-width:none;height:100vh;background:#000;}" +
+      "#hw-award-hero .hw-ah-bg{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(18px) brightness(.38);transform:scale(1.1);}" +
+      "#hw-award-hero .hw-ah-photo{position:absolute;left:7vw;top:50%;transform:translateY(-50%);height:92vh;width:auto;border:1px solid rgba(207,168,94,.6);box-shadow:0 30px 90px rgba(0,0,0,.85);}" +
+      "#hw-award-hero .hw-ah-scrimtr,#hw-award-hero .hw-ah-scrimb{display:none;}" +
+      "#hw-award-hero .hw-ah-hang{right:auto;left:calc(53.5vw + 30.7vh - min(13vw,190px));width:min(26vw,380px);}" +
+      "#hw-award-hero .hw-ah-thread{height:20vh;}" +
       "#hw-award-hero .hw-ah-plate .l1{font-size:13px;}" +
       "#hw-award-hero .hw-ah-plate .l2{font-size:11px;}" +
-      "#hw-award-hero .hw-ah-cta{left:calc(63% + clamp(140px,13.5vw,210px));bottom:11%;}" +
+      "#hw-award-hero .hw-ah-cta{left:calc(53.5vw + 30.7vh);transform:translateX(-50%);bottom:10%;}" +
     "}" +
     "@media (prefers-reduced-motion:reduce){#hw-award-hero .hw-ah-hang{animation:none;}#hw-award-hero .hw-ah-inner{transition:none;}}";
   document.head.appendChild(css);
@@ -423,6 +426,7 @@
   hero.id = "hw-award-hero";
   hero.innerHTML =
     '<div class="hw-ah-canvas">' +
+      '<img class="hw-ah-bg" src="images/site123/s123-hero-main.png" alt="" aria-hidden="true">' +
       '<img class="hw-ah-photo" src="images/site123/s123-hero-main.png" alt="The Hair Witch — Asheville. Luxury color, hair extensions and high-end hair artistry.">' +
       '<div class="hw-ah-scrimtr"></div><div class="hw-ah-scrimb"></div><div class="hw-ah-frame"></div>' +
       '<div class="hw-ah-hang">' +
