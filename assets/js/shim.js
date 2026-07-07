@@ -357,7 +357,7 @@
     "#hw-award-hero .hw-ah-thread:after{left:calc(50% + 5px);transform:skewX(-2.4deg);}" +
     "#hw-award-hero .hw-ah-knot{position:relative;height:12px;}" +
     "#hw-award-hero .hw-ah-knot:before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:11px;height:11px;border:1px solid #cfa85e;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f6e7b8,#8a6a33);}" +
-    "#hw-award-hero .hw-ah-seal{position:relative;width:100%;aspect-ratio:1;perspective:900px;cursor:pointer;}" +
+    "#hw-award-hero .hw-ah-seal{position:relative;width:100%;aspect-ratio:1;perspective:900px;cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}" +
     "#hw-award-hero .hw-ah-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.7,.2,1);}" +
     "#hw-award-hero .hw-ah-seal:hover .hw-ah-inner,#hw-award-hero .hw-ah-seal.flipped .hw-ah-inner{transform:rotateY(180deg);}" +
     "#hw-award-hero .hw-ah-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;}" +
@@ -439,7 +439,7 @@
     '<circle cx="100" cy="100" r="97" fill="url(#hwAhGoldDisc)"/>',
     '<circle cx="100" cy="100" r="96" fill="none" stroke="url(#hwAhRim)" stroke-width="2"/>',
     '<circle cx="100" cy="100" r="88" fill="none" stroke="#1a1408" stroke-width=".5" opacity=".6"/>',
-    "<text x='100' y='84' fill='#171006' font-family=\"'Bodoni Moda', serif\" font-weight='700' font-size='38' letter-spacing='1' text-anchor='middle'>4.9</text>",
+    '<text x="100" y="86" fill="#171006" font-family="Jost, sans-serif" font-weight="600" font-size="40" letter-spacing="1" text-anchor="middle">4.9</text>',
     '<text x="100" y="104" fill="#2b2010" font-family="Jost, sans-serif" font-size="9" letter-spacing="3.2" text-anchor="middle">★ ★ ★ ★ ★</text>',
     '<text x="100" y="126" fill="#231a09" font-weight="500" font-family="Jost, sans-serif" font-size="8.5" letter-spacing="2.8" text-anchor="middle">GOOGLE REVIEWS</text>',
     '<text x="100" y="142" fill="#3a2c12" font-family="Jost, sans-serif" font-size="8" letter-spacing="3.4" text-anchor="middle">MMXXV</text>',
