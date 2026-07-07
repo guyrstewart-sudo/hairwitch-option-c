@@ -309,3 +309,65 @@
     document.body.appendChild(wrap);
   })();
 })();
+
+/* 8. Accolade band — Rated Nº 2 top-rated hair salon (Google Reviews, 2025).
+   Inserted after MEET THERESA, styled to her Alegreya SC / black theme. */
+(function () {
+  var meet = document.getElementById("section-5bfeb3e13615b");
+  if (!meet || document.getElementById("hw-accolade")) return;
+
+  var css = document.createElement("style");
+  css.textContent =
+    "#hw-accolade{background:#000;color:#e9e1cf;text-align:center;padding:88px 20px;}" +
+    "#hw-accolade,#hw-accolade *{font-family:'Alegreya SC',Georgia,serif;}" +
+    "#hw-accolade .hw-medal{width:min(230px,62vw);margin:0 auto 34px;color:#e9e1cf;}" +
+    "#hw-accolade .hw-medal svg{width:100%;height:auto;display:block;overflow:visible;animation:hwGlowC 7s ease-in-out infinite;}" +
+    "#hw-accolade .hw-medal text{fill:currentColor;}" +
+    "#hw-accolade .medal-dash{animation:hwDashC 60s linear infinite;}" +
+    "@keyframes hwGlowC{0%,100%{filter:drop-shadow(0 0 8px rgba(233,225,207,.12));}50%{filter:drop-shadow(0 0 20px rgba(233,225,207,.32));}}" +
+    "@keyframes hwDashC{to{stroke-dashoffset:-640;}}" +
+    "#hw-accolade h2{font-size:34px;letter-spacing:.14em;margin:0 0 10px;color:#fff;font-weight:400;text-transform:uppercase;}" +
+    "#hw-accolade .hw-acc-sub{font-size:15px;letter-spacing:.28em;text-transform:uppercase;color:#cfc6ae;margin:0 0 6px;}" +
+    "#hw-accolade .hw-acc-src{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:#8f887a;margin:0;}" +
+    "#hw-accolade .hw-acc-div{width:72px;height:1px;background:#3a372f;margin:26px auto 0;}" +
+    "@media (prefers-reduced-motion:reduce){#hw-accolade .hw-medal svg,#hw-accolade .medal-dash{animation:none;}}";
+  document.head.appendChild(css);
+
+  var svg = [
+    '<svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rated number 2 top-rated hair salon, Asheville, Google Reviews 2025">',
+    '<defs>',
+    '<path id="hwArcTopC" d="M 27 130 A 103 103 0 0 1 233 130" fill="none"/>',
+    '<path id="hwArcBotC" d="M 32 130 A 98 98 0 0 0 228 130" fill="none"/>',
+    '<g id="hwLaurelC" fill="none" stroke="currentColor" stroke-width="1.2">',
+    '<path d="M 78 188 Q 46 164 40 120"/>',
+    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(72,182) rotate(-128)"/>',
+    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(60,172) rotate(-115)"/>',
+    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(50,159) rotate(-100)"/>',
+    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(44,145) rotate(-86)"/>',
+    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(41,131) rotate(-72)"/>',
+    '</g>',
+    '</defs>',
+    '<circle cx="130" cy="130" r="122" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>',
+    '<circle class="medal-dash" cx="130" cy="130" r="114" fill="none" stroke="currentColor" stroke-width=".75" stroke-dasharray="2 6" opacity=".5"/>',
+    '<circle cx="130" cy="130" r="88" fill="none" stroke="currentColor" stroke-width="1.2"/>',
+    '<text font-size="11" letter-spacing="2.6"><textPath href="#hwArcTopC" startOffset="50%" text-anchor="middle">TOP-RATED HAIR SALON</textPath></text>',
+    '<text font-size="9.5" letter-spacing="2.2"><textPath href="#hwArcBotC" startOffset="50%" text-anchor="middle">ASHEVILLE · NORTH CAROLINA</textPath></text>',
+    '<text x="130" y="96" font-size="11" letter-spacing="4.5" text-anchor="middle">RATED</text>',
+    '<text x="130" y="155" font-size="52" letter-spacing="2" text-anchor="middle">Nº 2</text>',
+    '<text x="130" y="176" font-size="11" letter-spacing="3" text-anchor="middle">★ ★ ★ ★ ★</text>',
+    '<text x="130" y="194" font-size="8.5" letter-spacing="1.8" text-anchor="middle">GOOGLE REVIEWS · 2025</text>',
+    '<use href="#hwLaurelC"/>',
+    '<use href="#hwLaurelC" transform="translate(260 0) scale(-1 1)"/>',
+    '</svg>'
+  ].join("");
+
+  var band = document.createElement("section");
+  band.id = "hw-accolade";
+  band.innerHTML =
+    '<div class="hw-medal" aria-hidden="true">' + svg + "</div>" +
+    "<h2>Rated Nº 2</h2>" +
+    '<p class="hw-acc-sub">Top-Rated Hair Salon — Asheville, North Carolina</p>' +
+    '<p class="hw-acc-src">As ranked by Google Reviews · 2025</p>' +
+    '<div class="hw-acc-div"></div>';
+  meet.insertAdjacentElement("afterend", band);
+})();
