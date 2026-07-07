@@ -437,7 +437,7 @@
             '<div class="hw-ah-face back">' + svgBack + '</div>' +
           '</div>' +
         '</div>' +
-        '<div class="hw-ah-plate"><div class="l1">GOOGLE REVIEWS</div><div class="l2">MMXXV · ASHEVILLE</div></div>' +
+        '<div class="hw-ah-plate"><div class="l1">GOOGLE REVIEWS</div><div class="l2">2025 · ASHEVILLE</div></div>' +
       '</div>' +
       '<a class="hw-ah-cta" href="' + bookUrl + '" target="_blank" rel="noopener">Book Now</a>' +
     '</div>';
