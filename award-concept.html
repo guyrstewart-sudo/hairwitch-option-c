@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hair Witch — № 2 Award Concept</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400;1,6..96,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #cfa85e;
+    --gold-hi: #f6e7b8;
+    --gold-lo: #8a6a33;
+    --black: #000;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #050505; }
+  body { font-family: "Jost", sans-serif; color: #fff; }
+
+  .stage { max-width: 760px; margin: 0 auto; background: var(--black); }
+
+  /* ---- header bar (as the mock) ---- */
+  .bar { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #000; }
+  .bar img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+  .bar .name { font-family: "Bodoni Moda", serif; letter-spacing: .28em; font-size: 15px; text-transform: uppercase; }
+  .bar .menu { margin-left: auto; border: 1px solid #444; padding: 8px 18px; font-size: 11px; letter-spacing: .3em; }
+
+  /* ---- hero canvas ---- */
+  .canvas { position: relative; overflow: hidden; }
+  .canvas > .photo { display: block; width: 100%; height: auto; }
+
+  /* couture hairline frame */
+  .frame { position: absolute; inset: 14px; border: 1px solid rgba(207,168,94,.5); pointer-events: none; }
+  .frame::before, .frame::after {
+    content: ""; position: absolute; width: 26px; height: 26px; border: 1px solid rgba(207,168,94,.85);
+  }
+  .frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .frame::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+  /* soft scrims so the gold reads against the set */
+  .scrim-tr { position: absolute; top: 0; right: 0; width: 68%; height: 64%;
+    background: radial-gradient(120% 100% at 88% 0%, rgba(0,0,0,.85) 0%, rgba(0,0,0,.45) 48%, transparent 74%);
+    pointer-events: none; }
+  .scrim-b { position: absolute; left: 0; right: 0; bottom: 0; height: 26%;
+    background: linear-gradient(to top, rgba(0,0,0,.72), transparent); pointer-events: none; }
+
+  /* =====  THE HANGING MEDALLION  ===== */
+  .hang {
+    position: absolute; top: 0; right: 8.5%;
+    width: clamp(132px, 30%, 196px);
+    transform-origin: 50% 0;
+    animation: sway 7s ease-in-out infinite alternate;
+    z-index: 4;
+  }
+  @keyframes sway { from { transform: rotate(1.5deg); } to { transform: rotate(-1.5deg); } }
+
+  .thread { position: relative; height: clamp(70px, 15vw, 120px); }
+  .thread::before, .thread::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, rgba(246,231,184,.15), var(--gold));
+  }
+  .thread::before { left: calc(50% - 5px); transform: skewX(2.4deg); }
+  .thread::after  { left: calc(50% + 5px); transform: skewX(-2.4deg); }
+
+  .knot { position: relative; height: 12px; }
+  .knot::before { content: ""; position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    width: 11px; height: 11px; border: 1px solid var(--gold); border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--gold-hi), var(--gold-lo)); }
+
+  /* the seal itself — flips on hover / tap */
+  .seal { position: relative; width: 100%; aspect-ratio: 1; perspective: 900px; cursor: pointer; }
+  .seal-inner { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+  .seal:hover .seal-inner, .seal.flipped .seal-inner { transform: rotateY(180deg); }
+  .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .face.back { transform: rotateY(180deg); }
+  .face svg { width: 100%; height: 100%; display: block; overflow: visible;
+    filter: drop-shadow(0 10px 22px rgba(0,0,0,.65)) drop-shadow(0 0 14px rgba(207,168,94,.22)); }
+
+  .hang .plate { text-align: center; margin-top: 12px; text-shadow: 0 1px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.85); }
+  .hang .plate .l1 { font-size: 10px; letter-spacing: .42em; color: var(--gold); }
+  .hang .plate .l2 { font-size: 8.5px; letter-spacing: .34em; color: rgba(255,255,255,.6); margin-top: 4px; }
+
+  /* ---- book now (as the mock) ---- */
+  .cta { position: absolute; left: 50%; bottom: 7.5%; transform: translateX(-50%); z-index: 3;
+    background: #fff; color: #000; padding: 16px 44px; font-size: 13px; letter-spacing: .32em;
+    text-decoration: none; text-transform: uppercase; font-weight: 500; }
+  .cta:hover { background: var(--gold-hi); }
+
+  /* ---- innerbloom chip (as the mock) ---- */
+  .chip { position: absolute; left: 3.5%; bottom: 3.5%; z-index: 3;
+    border: 1px solid #6b6b6b; background: rgba(0,0,0,.72); color: #ddd;
+    font-size: 10px; letter-spacing: .26em; padding: 9px 14px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hang { animation: none; }
+    .seal-inner { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="bar">
+    <img src="images/site123/s123-badge.jpg" alt="The Hair Witch badge">
+    <span class="name">The Hair Witch</span>
+    <span class="menu">MENU</span>
+  </div>
+
+  <div class="canvas">
+    <img class="photo" src="images/site123/s123-hero-main.png" alt="The Hair Witch — Asheville. Luxury color, hair extensions and high-end hair artistry.">
+    <div class="scrim-tr"></div>
+    <div class="scrim-b"></div>
+    <div class="frame"></div>
+
+    <!-- The award, hung in the studio on a gold thread -->
+    <div class="hang" id="hang">
+      <div class="thread"></div>
+      <div class="knot"></div>
+      <div class="seal" id="seal" role="button" tabindex="0"
+           aria-label="Rated number 2 top-rated hair salon, Asheville — Google Reviews 2025. Activate to see rating details.">
+        <div class="seal-inner">
+
+          <!-- FRONT -->
+          <div class="face front">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="foil" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0"   stop-color="#8a6a33"/>
+                  <stop offset=".25" stop-color="#cfa85e"/>
+                  <stop offset=".5"  stop-color="#f6e7b8"/>
+                  <stop offset=".75" stop-color="#cfa85e"/>
+                  <stop offset="1"   stop-color="#8a6a33"/>
+                  <animateTransform attributeName="gradientTransform" type="translate"
+                    values="-1 0; 1 0; -1 0" dur="8s" repeatCount="indefinite"/>
+                </linearGradient>
+                <radialGradient id="sheen" cx=".5" cy=".38" r=".75">
+                  <stop offset="0" stop-color="#141414"/>
+                  <stop offset=".8" stop-color="#050505"/>
+                  <stop offset="1" stop-color="#000"/>
+                </radialGradient>
+                <path id="arcT" d="M 22 100 A 78 78 0 0 1 178 100" fill="none"/>
+                <path id="arcB" d="M 27 100 A 73 73 0 0 0 173 100" fill="none"/>
+              </defs>
+
+              <circle cx="100" cy="100" r="97" fill="url(#sheen)"/>
+              <circle cx="100" cy="100" r="96" fill="none" stroke="url(#foil)" stroke-width="1.6"/>
+              <circle cx="100" cy="100" r="90" fill="none" stroke="#cfa85e" stroke-width=".5" opacity=".55" stroke-dasharray="1.5 4"/>
+              <circle cx="100" cy="100" r="64" fill="none" stroke="#cfa85e" stroke-width=".8" opacity=".8"/>
+
+              <text fill="#e7cf9a" font-family="Jost, sans-serif" font-size="9" letter-spacing="2.6">
+                <textPath href="#arcT" startOffset="50%" text-anchor="middle">TOP-RATED HAIR SALON</textPath>
+              </text>
+              <text fill="#e7cf9a" font-family="Jost, sans-serif" font-size="8" letter-spacing="2.4">
+                <textPath href="#arcB" startOffset="50%" text-anchor="middle">ASHEVILLE · NORTH CAROLINA</textPath>
+              </text>
+
+              <!-- golden strands of hair flowing behind the numeral -->
+              <g fill="none" stroke-linecap="round" opacity=".85">
+                <path d="M 48 128 C 66 140, 88 146, 116 138 C 142 130, 152 112, 148 96"
+                      stroke="url(#foil)" stroke-width="1.6"/>
+                <path d="M 52 134 C 72 146, 96 150, 122 141 C 144 133, 154 118, 151 104"
+                      stroke="#cfa85e" stroke-width="1" opacity=".6"/>
+                <path d="M 46 122 C 62 133, 84 140, 110 134 C 134 128, 146 112, 144 98"
+                      stroke="#f6e7b8" stroke-width=".6" opacity=".5"/>
+              </g>
+
+              <text x="100" y="76" fill="#e7cf9a" font-family="Jost, sans-serif" font-size="9" letter-spacing="4.6" text-anchor="middle">RATED</text>
+              <text x="100" y="124" fill="url(#foil)" font-family="'Bodoni Moda', serif" font-style="italic" font-weight="600" font-size="52" text-anchor="middle">№2</text>
+              <!-- her five stars, strung along the strand like jewels on hair -->
+              <g fill="#f6e7b8">
+                <path d="M0 -3.2 L.9 -.9 L3.2 0 L.9 .9 L0 3.2 L-.9 .9 L-3.2 0 L-.9 -.9 Z" transform="translate(56,131)"/>
+                <path d="M0 -3.6 L1 -1 L3.6 0 L1 1 L0 3.6 L-1 1 L-3.6 0 L-1 -1 Z" transform="translate(79,141)"/>
+                <path d="M0 -4 L1.1 -1.1 L4 0 L1.1 1.1 L0 4 L-1.1 1.1 L-4 0 L-1.1 -1.1 Z" transform="translate(103,142)"/>
+                <path d="M0 -3.6 L1 -1 L3.6 0 L1 1 L0 3.6 L-1 1 L-3.6 0 L-1 -1 Z" transform="translate(128,133)"/>
+                <path d="M0 -3.2 L.9 -.9 L3.2 0 L.9 .9 L0 3.2 L-.9 .9 L-3.2 0 L-.9 -.9 Z" transform="translate(146,110)"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- BACK -->
+          <div class="face back">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="100" cy="100" r="97" fill="#0a0a0a"/>
+              <circle cx="100" cy="100" r="96" fill="none" stroke="#cfa85e" stroke-width="1.4"/>
+              <circle cx="100" cy="100" r="88" fill="none" stroke="#cfa85e" stroke-width=".5" opacity=".5"/>
+              <text x="100" y="84" fill="url(#foil)" font-family="'Bodoni Moda', serif" font-style="italic" font-weight="600" font-size="40" text-anchor="middle">4.9</text>
+              <text x="100" y="104" fill="#cfa85e" font-family="Jost, sans-serif" font-size="9" letter-spacing="3.2" text-anchor="middle">★ ★ ★ ★ ★</text>
+              <text x="100" y="126" fill="#e7cf9a" font-family="Jost, sans-serif" font-size="8.5" letter-spacing="2.8" text-anchor="middle">GOOGLE REVIEWS</text>
+              <text x="100" y="142" fill="rgba(255,255,255,.55)" font-family="Jost, sans-serif" font-size="8" letter-spacing="3.4" text-anchor="middle">MMXXV</text>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+      <div class="plate">
+        <div class="l1">GOOGLE REVIEWS</div>
+        <div class="l2">MMXXV · ASHEVILLE</div>
+      </div>
+    </div>
+
+    <a class="cta" href="https://book.squareup.com/appointments/wnldzv2a05sx0o/location/LCA4TGQ6Z7CYZ" target="_blank" rel="noopener">Book Now</a>
+    <span class="chip">♫ PLAY INNERBLOOM</span>
+  </div>
+</div>
+
+<script>
+  /* tap-to-flip for touch screens; hover handles desktop */
+  var seal = document.getElementById("seal");
+  function flip() { seal.classList.toggle("flipped"); }
+  seal.addEventListener("click", flip);
+  seal.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } });
+</script>
+</body>
+</html>
