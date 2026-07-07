@@ -307,6 +307,18 @@
     wrap.appendChild(play); wrap.appendChild(down); wrap.appendChild(up); wrap.appendChild(mute);
     wrap.appendChild(frameHolder);
     document.body.appendChild(wrap);
+
+    /* Auto-start on the first tap/click/keypress anywhere — real autoplay
+       with sound is blocked by Chrome/Safari until a user gesture. */
+    function hwAutoPlay() {
+      ["pointerdown", "keydown", "touchend"].forEach(function (ev) {
+        document.removeEventListener(ev, hwAutoPlay, true);
+      });
+      if (!playing) play.click();
+    }
+    ["pointerdown", "keydown", "touchend"].forEach(function (ev) {
+      document.addEventListener(ev, hwAutoPlay, true);
+    });
   })();
 })();
 
@@ -324,6 +336,13 @@
 
   var css = document.createElement("style");
   css.textContent =
+    "body{background:#000!important;}" +
+    ".all-magic-buttons{display:none!important;}" +
+    "#jarallax-container-0,.jarallax-container{display:none!important;}" +
+    "#s123ModulesContainer, #s123ModulesContainer :is(p,li,span,em,strong,td,label,blockquote){color:#e7d9b8!important;}" +
+    "#s123ModulesContainer :is(h1,h2,h3,h4,h5,.page_header_style){color:#cfa85e!important;}" +
+    "#s123ModulesContainer a{color:#e9cf9a!important;}" +
+    "#mainNav a,#mainNav li,#mainNavMobile a,#mainNavMobile button,#mainNavMobile span{color:#cfa85e!important;}" +
     "#hw-award-hero{background:#000;padding:0 0 6px;}" +
     "#hw-award-hero .hw-ah-canvas{position:relative;overflow:hidden;max-width:780px;margin:0 auto;}" +
     "#hw-award-hero .hw-ah-photo{display:block;width:100%;height:auto;}" +
@@ -350,7 +369,7 @@
     "#hw-award-hero .hw-ah-face svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 10px 22px rgba(0,0,0,.65)) drop-shadow(0 0 14px rgba(207,168,94,.22));}" +
     "#hw-award-hero .hw-ah-plate{text-align:center;margin-top:12px;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 2px 6px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.9);font-family:Jost,sans-serif;}" +
     "#hw-award-hero .hw-ah-plate .l1{font-size:10px;letter-spacing:.42em;color:#e7cf9a;}" +
-    "#hw-award-hero .hw-ah-plate .l2{font-size:8.5px;letter-spacing:.34em;color:rgba(255,255,255,.85);margin-top:4px;}" +
+    "#hw-award-hero .hw-ah-plate .l2{font-size:8.5px;letter-spacing:.34em;color:#e7cf9a;margin-top:4px;}" +
     "#hw-award-hero .hw-ah-cta{position:absolute;left:50%;bottom:7.5%;transform:translateX(-50%);z-index:3;background:#fff;color:#000;padding:16px 44px;font-size:13px;letter-spacing:.32em;text-decoration:none;text-transform:uppercase;font-weight:500;font-family:Jost,sans-serif;}" +
     "#hw-award-hero .hw-ah-cta:hover{background:#f6e7b8;}" +
     "@media (min-width:900px){" +
@@ -396,7 +415,12 @@
     '<path d="M 46 122 C 62 133, 84 140, 110 134 C 134 128, 146 112, 144 98" stroke="#f6e7b8" stroke-width=".6" opacity=".5"/>',
     '</g>',
     '<text x="100" y="76" fill="#e7cf9a" font-family="Jost, sans-serif" font-size="9" letter-spacing="4.6" text-anchor="middle">RATED</text>',
-    "<text x='100' y='124' fill='url(#hwAhFoil)' font-family=\"'Bodoni Moda', serif\" font-style='italic' font-weight='600' font-size='52' text-anchor='middle'>№2</text>",
+    "<text x='100' y='118' fill='url(#hwAhFoil)' font-family=\"'Bodoni Moda', serif\" font-style='italic' font-weight='600' font-size='34' letter-spacing='2' text-anchor='middle'>TOP 2</text>",
+    '<g stroke="#f6e7b8" stroke-width="1.1" fill="none" transform="translate(52,120) rotate(24)">',
+    '<circle cx="-5.5" cy="9" r="3"/><circle cx="5.5" cy="9" r="3"/>',
+    '<path d="M -3.8 6.4 L 4.6 -11"/><path d="M 3.8 6.4 L -4.6 -11"/>',
+    '<circle cx="0" cy="0" r="1" fill="#f6e7b8" stroke="none"/>',
+    '</g>',
     '<g fill="#f6e7b8">',
     '<path d="M0 -3.2 L.9 -.9 L3.2 0 L.9 .9 L0 3.2 L-.9 .9 L-3.2 0 L-.9 -.9 Z" transform="translate(56,131)"/>',
     '<path d="M0 -3.6 L1 -1 L3.6 0 L1 1 L0 3.6 L-1 1 L-3.6 0 L-1 -1 Z" transform="translate(79,141)"/>',
@@ -412,10 +436,10 @@
     '<circle cx="100" cy="100" r="97" fill="#0a0a0a"/>',
     '<circle cx="100" cy="100" r="96" fill="none" stroke="#cfa85e" stroke-width="1.4"/>',
     '<circle cx="100" cy="100" r="88" fill="none" stroke="#cfa85e" stroke-width=".5" opacity=".5"/>',
-    "<text x='100' y='84' fill='url(#hwAhFoil)' font-family=\"'Bodoni Moda', serif\" font-style='italic' font-weight='600' font-size='40' text-anchor='middle'>4.9</text>",
+    "<text x='100' y='84' fill='url(#hwAhFoil)' font-family=\"'Bodoni Moda', serif\" font-weight='700' font-size='38' letter-spacing='1' text-anchor='middle'>4.9</text>",
     '<text x="100" y="104" fill="#cfa85e" font-family="Jost, sans-serif" font-size="9" letter-spacing="3.2" text-anchor="middle">★ ★ ★ ★ ★</text>',
     '<text x="100" y="126" fill="#e7cf9a" font-family="Jost, sans-serif" font-size="8.5" letter-spacing="2.8" text-anchor="middle">GOOGLE REVIEWS</text>',
-    '<text x="100" y="142" fill="rgba(255,255,255,.55)" font-family="Jost, sans-serif" font-size="8" letter-spacing="3.4" text-anchor="middle">MMXXV</text>',
+    '<text x="100" y="142" fill="#cfa85e" font-family="Jost, sans-serif" font-size="8" letter-spacing="3.4" text-anchor="middle">MMXXV</text>',
     '</svg>'
   ].join("");
 
@@ -431,7 +455,7 @@
       '<div class="hw-ah-scrimtr"></div><div class="hw-ah-scrimb"></div><div class="hw-ah-frame"></div>' +
       '<div class="hw-ah-hang">' +
         '<div class="hw-ah-thread"></div><div class="hw-ah-knot"></div>' +
-        '<div class="hw-ah-seal" role="button" tabindex="0" aria-label="Rated number 2 top-rated hair salon, Asheville — Google Reviews 2025. Activate to see rating details.">' +
+        '<div class="hw-ah-seal" role="button" tabindex="0" aria-label="Rated Top 2 hair salon, Asheville — Google Reviews 2025. Activate to see rating details.">' +
           '<div class="hw-ah-inner">' +
             '<div class="hw-ah-face front">' + svgFront + '</div>' +
             '<div class="hw-ah-face back">' + svgBack + '</div>' +
