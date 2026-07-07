@@ -339,10 +339,6 @@
     "body{background:#000!important;}" +
     ".all-magic-buttons{display:none!important;}" +
     "#jarallax-container-0,.jarallax-container{display:none!important;}" +
-    "#s123ModulesContainer, #s123ModulesContainer :is(p,li,span,em,strong,td,label,blockquote){color:#e7d9b8!important;}" +
-    "#s123ModulesContainer :is(h1,h2,h3,h4,h5,.page_header_style){color:#cfa85e!important;}" +
-    "#s123ModulesContainer a{color:#e9cf9a!important;}" +
-    "#mainNav a,#mainNav li,#mainNavMobile a,#mainNavMobile button,#mainNavMobile span{color:#cfa85e!important;}" +
     "#hw-award-hero{background:#000;padding:0 0 6px;}" +
     "#hw-award-hero .hw-ah-canvas{position:relative;overflow:hidden;max-width:780px;margin:0 auto;}" +
     "#hw-award-hero .hw-ah-photo{display:block;width:100%;height:auto;}" +
@@ -450,8 +446,8 @@
   hero.id = "hw-award-hero";
   hero.innerHTML =
     '<div class="hw-ah-canvas">' +
-      '<img class="hw-ah-bg" src="images/site123/s123-hero-main.png" alt="" aria-hidden="true">' +
-      '<img class="hw-ah-photo" src="images/site123/s123-hero-main.png" alt="The Hair Witch — Asheville. Luxury color, hair extensions and high-end hair artistry.">' +
+      '<img class="hw-ah-bg" src="images/site123/s123-hero-main-gold.png" alt="" aria-hidden="true">' +
+      '<img class="hw-ah-photo" src="images/site123/s123-hero-main-gold.png" alt="The Hair Witch — Asheville. Luxury color, hair extensions and high-end hair artistry.">' +
       '<div class="hw-ah-scrimtr"></div><div class="hw-ah-scrimb"></div><div class="hw-ah-frame"></div>' +
       '<div class="hw-ah-hang">' +
         '<div class="hw-ah-thread"></div><div class="hw-ah-knot"></div>' +
