@@ -310,64 +310,130 @@
   })();
 })();
 
-/* 8. Accolade band — Rated Nº 2 top-rated hair salon (Google Reviews, 2025).
-   Inserted after MEET THERESA, styled to her Alegreya SC / black theme. */
+/* 8. Award hero — the "№ 2" gold medallion hero, replacing the original
+   slideshow hero. Approved by Guy & Theresa 2026-07-07. The standalone
+   concept is preserved at /award-concept.html */
 (function () {
-  var meet = document.getElementById("section-5bfeb3e13615b");
-  if (!meet || document.getElementById("hw-accolade")) return;
+  var top = document.getElementById("top-section");
+  if (!top || document.getElementById("hw-award-hero")) return;
+
+  var fonts = document.createElement("link");
+  fonts.rel = "stylesheet";
+  fonts.href = "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,600&family=Jost:wght@300;400;500&display=swap";
+  document.head.appendChild(fonts);
 
   var css = document.createElement("style");
   css.textContent =
-    "#hw-accolade{background:#000;color:#e9e1cf;text-align:center;padding:88px 20px;}" +
-    "#hw-accolade,#hw-accolade *{font-family:'Alegreya SC',Georgia,serif;}" +
-    "#hw-accolade .hw-medal{width:min(230px,62vw);margin:0 auto 34px;color:#e9e1cf;}" +
-    "#hw-accolade .hw-medal svg{width:100%;height:auto;display:block;overflow:visible;animation:hwGlowC 7s ease-in-out infinite;}" +
-    "#hw-accolade .hw-medal text{fill:currentColor;}" +
-    "#hw-accolade .medal-dash{animation:hwDashC 60s linear infinite;}" +
-    "@keyframes hwGlowC{0%,100%{filter:drop-shadow(0 0 8px rgba(233,225,207,.12));}50%{filter:drop-shadow(0 0 20px rgba(233,225,207,.32));}}" +
-    "@keyframes hwDashC{to{stroke-dashoffset:-640;}}" +
-    "#hw-accolade h2{font-size:34px;letter-spacing:.14em;margin:0 0 10px;color:#fff;font-weight:400;text-transform:uppercase;}" +
-    "#hw-accolade .hw-acc-sub{font-size:15px;letter-spacing:.28em;text-transform:uppercase;color:#cfc6ae;margin:0 0 6px;}" +
-    "#hw-accolade .hw-acc-src{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:#8f887a;margin:0;}" +
-    "#hw-accolade .hw-acc-div{width:72px;height:1px;background:#3a372f;margin:26px auto 0;}" +
-    "@media (prefers-reduced-motion:reduce){#hw-accolade .hw-medal svg,#hw-accolade .medal-dash{animation:none;}}";
+    "#hw-award-hero{background:#000;padding:0 0 6px;}" +
+    "#hw-award-hero .hw-ah-canvas{position:relative;overflow:hidden;max-width:780px;margin:0 auto;}" +
+    "#hw-award-hero .hw-ah-photo{display:block;width:100%;height:auto;}" +
+    "#hw-award-hero .hw-ah-frame{position:absolute;inset:14px;border:1px solid rgba(207,168,94,.5);pointer-events:none;}" +
+    "#hw-award-hero .hw-ah-frame:before,#hw-award-hero .hw-ah-frame:after{content:'';position:absolute;width:26px;height:26px;border:1px solid rgba(207,168,94,.85);}" +
+    "#hw-award-hero .hw-ah-frame:before{top:-1px;left:-1px;border-right:0;border-bottom:0;}" +
+    "#hw-award-hero .hw-ah-frame:after{bottom:-1px;right:-1px;border-left:0;border-top:0;}" +
+    "#hw-award-hero .hw-ah-scrimtr{position:absolute;top:0;right:0;width:68%;height:64%;background:radial-gradient(120% 100% at 88% 0%,rgba(0,0,0,.85) 0%,rgba(0,0,0,.45) 48%,transparent 74%);pointer-events:none;}" +
+    "#hw-award-hero .hw-ah-scrimb{position:absolute;left:0;right:0;bottom:0;height:26%;background:linear-gradient(to top,rgba(0,0,0,.72),transparent);pointer-events:none;}" +
+    "#hw-award-hero .hw-ah-hang{position:absolute;top:0;right:8.5%;width:clamp(132px,30%,196px);transform-origin:50% 0;animation:hwAhSway 7s ease-in-out infinite alternate;z-index:4;}" +
+    "@keyframes hwAhSway{from{transform:rotate(1.5deg);}to{transform:rotate(-1.5deg);}}" +
+    "#hw-award-hero .hw-ah-thread{position:relative;height:clamp(70px,15vw,120px);}" +
+    "#hw-award-hero .hw-ah-thread:before,#hw-award-hero .hw-ah-thread:after{content:'';position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(246,231,184,.15),#cfa85e);}" +
+    "#hw-award-hero .hw-ah-thread:before{left:calc(50% - 5px);transform:skewX(2.4deg);}" +
+    "#hw-award-hero .hw-ah-thread:after{left:calc(50% + 5px);transform:skewX(-2.4deg);}" +
+    "#hw-award-hero .hw-ah-knot{position:relative;height:12px;}" +
+    "#hw-award-hero .hw-ah-knot:before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:11px;height:11px;border:1px solid #cfa85e;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f6e7b8,#8a6a33);}" +
+    "#hw-award-hero .hw-ah-seal{position:relative;width:100%;aspect-ratio:1;perspective:900px;cursor:pointer;}" +
+    "#hw-award-hero .hw-ah-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.7,.2,1);}" +
+    "#hw-award-hero .hw-ah-seal:hover .hw-ah-inner,#hw-award-hero .hw-ah-seal.flipped .hw-ah-inner{transform:rotateY(180deg);}" +
+    "#hw-award-hero .hw-ah-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;}" +
+    "#hw-award-hero .hw-ah-face.back{transform:rotateY(180deg);}" +
+    "#hw-award-hero .hw-ah-face svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 10px 22px rgba(0,0,0,.65)) drop-shadow(0 0 14px rgba(207,168,94,.22));}" +
+    "#hw-award-hero .hw-ah-plate{text-align:center;margin-top:12px;text-shadow:0 1px 4px rgba(0,0,0,.95),0 0 14px rgba(0,0,0,.85);font-family:Jost,sans-serif;}" +
+    "#hw-award-hero .hw-ah-plate .l1{font-size:10px;letter-spacing:.42em;color:#cfa85e;}" +
+    "#hw-award-hero .hw-ah-plate .l2{font-size:8.5px;letter-spacing:.34em;color:rgba(255,255,255,.6);margin-top:4px;}" +
+    "#hw-award-hero .hw-ah-cta{position:absolute;left:50%;bottom:7.5%;transform:translateX(-50%);z-index:3;background:#fff;color:#000;padding:16px 44px;font-size:13px;letter-spacing:.32em;text-decoration:none;text-transform:uppercase;font-weight:500;font-family:Jost,sans-serif;}" +
+    "#hw-award-hero .hw-ah-cta:hover{background:#f6e7b8;}" +
+    "@media (prefers-reduced-motion:reduce){#hw-award-hero .hw-ah-hang{animation:none;}#hw-award-hero .hw-ah-inner{transition:none;}}";
   document.head.appendChild(css);
 
-  var svg = [
-    '<svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rated number 2 top-rated hair salon, Asheville, Google Reviews 2025">',
+  var svgFront = [
+    '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
     '<defs>',
-    '<path id="hwArcTopC" d="M 27 130 A 103 103 0 0 1 233 130" fill="none"/>',
-    '<path id="hwArcBotC" d="M 32 130 A 98 98 0 0 0 228 130" fill="none"/>',
-    '<g id="hwLaurelC" fill="none" stroke="currentColor" stroke-width="1.2">',
-    '<path d="M 78 188 Q 46 164 40 120"/>',
-    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(72,182) rotate(-128)"/>',
-    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(60,172) rotate(-115)"/>',
-    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(50,159) rotate(-100)"/>',
-    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(44,145) rotate(-86)"/>',
-    '<path fill="currentColor" stroke="none" d="M0 0 Q5 -7 0 -16 Q-5 -7 0 0" transform="translate(41,131) rotate(-72)"/>',
-    '</g>',
+    '<linearGradient id="hwAhFoil" x1="0" y1="0" x2="1" y2="0">',
+    '<stop offset="0" stop-color="#8a6a33"/><stop offset=".25" stop-color="#cfa85e"/>',
+    '<stop offset=".5" stop-color="#f6e7b8"/><stop offset=".75" stop-color="#cfa85e"/>',
+    '<stop offset="1" stop-color="#8a6a33"/>',
+    '<animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0; -1 0" dur="8s" repeatCount="indefinite"/>',
+    '</linearGradient>',
+    '<radialGradient id="hwAhSheen" cx=".5" cy=".38" r=".75">',
+    '<stop offset="0" stop-color="#141414"/><stop offset=".8" stop-color="#050505"/><stop offset="1" stop-color="#000"/>',
+    '</radialGradient>',
+    '<path id="hwAhArcT" d="M 22 100 A 78 78 0 0 1 178 100" fill="none"/>',
+    '<path id="hwAhArcB" d="M 27 100 A 73 73 0 0 0 173 100" fill="none"/>',
     '</defs>',
-    '<circle cx="130" cy="130" r="122" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>',
-    '<circle class="medal-dash" cx="130" cy="130" r="114" fill="none" stroke="currentColor" stroke-width=".75" stroke-dasharray="2 6" opacity=".5"/>',
-    '<circle cx="130" cy="130" r="88" fill="none" stroke="currentColor" stroke-width="1.2"/>',
-    '<text font-size="11" letter-spacing="2.6"><textPath href="#hwArcTopC" startOffset="50%" text-anchor="middle">TOP-RATED HAIR SALON</textPath></text>',
-    '<text font-size="9.5" letter-spacing="2.2"><textPath href="#hwArcBotC" startOffset="50%" text-anchor="middle">ASHEVILLE · NORTH CAROLINA</textPath></text>',
-    '<text x="130" y="96" font-size="11" letter-spacing="4.5" text-anchor="middle">RATED</text>',
-    '<text x="130" y="155" font-size="52" letter-spacing="2" text-anchor="middle">Nº 2</text>',
-    '<text x="130" y="176" font-size="11" letter-spacing="3" text-anchor="middle">★ ★ ★ ★ ★</text>',
-    '<text x="130" y="194" font-size="8.5" letter-spacing="1.8" text-anchor="middle">GOOGLE REVIEWS · 2025</text>',
-    '<use href="#hwLaurelC"/>',
-    '<use href="#hwLaurelC" transform="translate(260 0) scale(-1 1)"/>',
+    '<circle cx="100" cy="100" r="97" fill="url(#hwAhSheen)"/>',
+    '<circle cx="100" cy="100" r="96" fill="none" stroke="url(#hwAhFoil)" stroke-width="1.6"/>',
+    '<circle cx="100" cy="100" r="90" fill="none" stroke="#cfa85e" stroke-width=".5" opacity=".55" stroke-dasharray="1.5 4"/>',
+    '<circle cx="100" cy="100" r="64" fill="none" stroke="#cfa85e" stroke-width=".8" opacity=".8"/>',
+    '<text fill="#e7cf9a" font-family="Jost, sans-serif" font-size="9" letter-spacing="2.6"><textPath href="#hwAhArcT" startOffset="50%" text-anchor="middle">TOP-RATED HAIR SALON</textPath></text>',
+    '<text fill="#e7cf9a" font-family="Jost, sans-serif" font-size="8" letter-spacing="2.4"><textPath href="#hwAhArcB" startOffset="50%" text-anchor="middle">ASHEVILLE · NORTH CAROLINA</textPath></text>',
+    '<g fill="none" stroke-linecap="round" opacity=".85">',
+    '<path d="M 48 128 C 66 140, 88 146, 116 138 C 142 130, 152 112, 148 96" stroke="url(#hwAhFoil)" stroke-width="1.6"/>',
+    '<path d="M 52 134 C 72 146, 96 150, 122 141 C 144 133, 154 118, 151 104" stroke="#cfa85e" stroke-width="1" opacity=".6"/>',
+    '<path d="M 46 122 C 62 133, 84 140, 110 134 C 134 128, 146 112, 144 98" stroke="#f6e7b8" stroke-width=".6" opacity=".5"/>',
+    '</g>',
+    '<text x="100" y="76" fill="#e7cf9a" font-family="Jost, sans-serif" font-size="9" letter-spacing="4.6" text-anchor="middle">RATED</text>',
+    "<text x='100' y='124' fill='url(#hwAhFoil)' font-family=\"'Bodoni Moda', serif\" font-style='italic' font-weight='600' font-size='52' text-anchor='middle'>№2</text>",
+    '<g fill="#f6e7b8">',
+    '<path d="M0 -3.2 L.9 -.9 L3.2 0 L.9 .9 L0 3.2 L-.9 .9 L-3.2 0 L-.9 -.9 Z" transform="translate(56,131)"/>',
+    '<path d="M0 -3.6 L1 -1 L3.6 0 L1 1 L0 3.6 L-1 1 L-3.6 0 L-1 -1 Z" transform="translate(79,141)"/>',
+    '<path d="M0 -4 L1.1 -1.1 L4 0 L1.1 1.1 L0 4 L-1.1 1.1 L-4 0 L-1.1 -1.1 Z" transform="translate(103,142)"/>',
+    '<path d="M0 -3.6 L1 -1 L3.6 0 L1 1 L0 3.6 L-1 1 L-3.6 0 L-1 -1 Z" transform="translate(128,133)"/>',
+    '<path d="M0 -3.2 L.9 -.9 L3.2 0 L.9 .9 L0 3.2 L-.9 .9 L-3.2 0 L-.9 -.9 Z" transform="translate(146,110)"/>',
+    '</g>',
     '</svg>'
   ].join("");
 
-  var band = document.createElement("section");
-  band.id = "hw-accolade";
-  band.innerHTML =
-    '<div class="hw-medal" aria-hidden="true">' + svg + "</div>" +
-    "<h2>Rated Nº 2</h2>" +
-    '<p class="hw-acc-sub">Top-Rated Hair Salon — Asheville, North Carolina</p>' +
-    '<p class="hw-acc-src">As ranked by Google Reviews · 2025</p>' +
-    '<div class="hw-acc-div"></div>';
-  meet.insertAdjacentElement("afterend", band);
+  var svgBack = [
+    '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+    '<circle cx="100" cy="100" r="97" fill="#0a0a0a"/>',
+    '<circle cx="100" cy="100" r="96" fill="none" stroke="#cfa85e" stroke-width="1.4"/>',
+    '<circle cx="100" cy="100" r="88" fill="none" stroke="#cfa85e" stroke-width=".5" opacity=".5"/>',
+    "<text x='100' y='84' fill='url(#hwAhFoil)' font-family=\"'Bodoni Moda', serif\" font-style='italic' font-weight='600' font-size='40' text-anchor='middle'>4.9</text>",
+    '<text x="100" y="104" fill="#cfa85e" font-family="Jost, sans-serif" font-size="9" letter-spacing="3.2" text-anchor="middle">★ ★ ★ ★ ★</text>',
+    '<text x="100" y="126" fill="#e7cf9a" font-family="Jost, sans-serif" font-size="8.5" letter-spacing="2.8" text-anchor="middle">GOOGLE REVIEWS</text>',
+    '<text x="100" y="142" fill="rgba(255,255,255,.55)" font-family="Jost, sans-serif" font-size="8" letter-spacing="3.4" text-anchor="middle">MMXXV</text>',
+    '</svg>'
+  ].join("");
+
+  var bookUrl = (window.HW_CONFIG && window.HW_CONFIG.squareBookingUrl) ||
+    "https://book.squareup.com/appointments/wnldzv2a05sx0o/location/LCA4TGQ6Z7CYZ";
+
+  var hero = document.createElement("section");
+  hero.id = "hw-award-hero";
+  hero.innerHTML =
+    '<div class="hw-ah-canvas">' +
+      '<img class="hw-ah-photo" src="images/site123/s123-hero-main.png" alt="The Hair Witch — Asheville. Luxury color, hair extensions and high-end hair artistry.">' +
+      '<div class="hw-ah-scrimtr"></div><div class="hw-ah-scrimb"></div><div class="hw-ah-frame"></div>' +
+      '<div class="hw-ah-hang">' +
+        '<div class="hw-ah-thread"></div><div class="hw-ah-knot"></div>' +
+        '<div class="hw-ah-seal" role="button" tabindex="0" aria-label="Rated number 2 top-rated hair salon, Asheville — Google Reviews 2025. Activate to see rating details.">' +
+          '<div class="hw-ah-inner">' +
+            '<div class="hw-ah-face front">' + svgFront + '</div>' +
+            '<div class="hw-ah-face back">' + svgBack + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="hw-ah-plate"><div class="l1">GOOGLE REVIEWS</div><div class="l2">MMXXV · ASHEVILLE</div></div>' +
+      '</div>' +
+      '<a class="hw-ah-cta" href="' + bookUrl + '" target="_blank" rel="noopener">Book Now</a>' +
+    '</div>';
+
+  top.parentElement.insertBefore(hero, top);
+  top.style.display = "none";
+
+  var seal = hero.querySelector(".hw-ah-seal");
+  function flip() { seal.classList.toggle("flipped"); }
+  seal.addEventListener("click", flip);
+  seal.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+  });
 })();
